@@ -1,58 +1,38 @@
 import 'package:flutter/material.dart';
 
-
-class Mood {
-  String name;
-  int number;
-  Mood(this.name, this.number);
-}
-
-final List<Mood> mood = <Mood>[
-  Mood('Хорошо', 8), Mood('Отлично', 10), Mood('Очень плохо', 1)
-];
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.blueGrey,
-      ),
+void main() {
+  runApp(
+    MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-          title: Center(child: Text('Mood')),
-        ),
-        floatingActionButton: FloatingActionButton(
-           onPressed: () {},
-           backgroundColor: Colors.green,
-           child: Icon(Icons.add),
-        ),
-        body: ListView.separated(
-            padding: const EdgeInsets.all(8),
-            itemCount: mood.length,
-            separatorBuilder: (BuildContext context, int index) =>
-                Divider(height: 20, color: Colors.grey,  thickness: 2,),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      Text(mood[index].name, style: TextStyle(fontSize: 22)),
-                      Text("Состояние оценивается на: ${mood[index].number}", style: TextStyle(fontSize: 18))
-                  ],
-                )
-              );
-            }
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 100,
+                color: Colors.blue,
+                margin: EdgeInsets.all(20),
+                child: Center(child: Text('Header')),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 120,
+                color: Colors.green,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Center(child: Text('Quote Card')),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 140,
+                color: Colors.orange,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Center(child: Text('Mood Cards')),
+              ),
+            ],
           ),
         ),
-      );
-  }
+      ),
+    ),
+  );
 }
-
